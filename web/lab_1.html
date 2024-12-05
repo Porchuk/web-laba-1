@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин техніки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+        }
+        .product {
+            background-color: white;
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 220px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            color: #333;
+            font-size: 18px;
+        }
+        .highlight {
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 id="title">Магазин техніки "TechStore"</h1>
+</header>
+
+<div class="product" id="product1">
+    <h2>Ноутбук: Acer Aspire 5</h2>
+    <p>Ціна: 20 000 грн</p>
+    <button class="buyBtn">Купити</button>
+</div>
+
+<div class="product" id="product2">
+    <h2>Смартфон: iPhone 15</h2>
+    <p>Ціна: 30 000 грн</p>
+    <button class="buyBtn">Купити</button>
+</div>
+
+<div class="product" id="product3">
+    <h2>Телевізор: Samsung 55"</h2>
+    <p>Ціна: 15 000 грн</p>
+    <button class="buyBtn">Купити</button>
+</div>
+
+<p id="message"></p>
+
+<script>
+// Використання getElementById для зміни заголовку
+document.getElementById('title').textContent = 'Ласкаво просимо до магазину "TechStore"!';
+
+// Використання getElementsByClassName для роботи з усіма кнопками
+var buttons = document.getElementsByClassName('buyBtn');
+var firstProduct = document.querySelector('#product1');
+var secondProduct = document.querySelector('#product2');
+var thirdProduct = document.querySelector('#product3');
+for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function() {
+        document.getElementById('message').textContent = 'Ви купили ' + this.parentElement.querySelector('h2').textContent;
+        
+        firstProduct.classList.remove('highlight');
+        secondProduct.classList.remove('highlight');
+        thirdProduct.classList.remove('highlight');
+
+        this.parentElement.classList.add('highlight');
+    });
+}
+
+// Використання getElementsByTagName для зміни стилів всіх абзаців
+var paragraphs = document.getElementsByTagName('p');
+for (var j = 0; j < paragraphs.length; j++) {
+    paragraphs[j].style.color = '#6c757d';
+}
+
+// Додатковий Event Listener для зміни стилю заголовку при наведенні
+document.getElementById('title').addEventListener('mouseover', function() {
+    this.style.color = 'orange';
+});
+document.getElementById('title').addEventListener('mouseout', function() {
+    this.style.color = 'white';
+});
+</script>
+
+</body>
+</html>
